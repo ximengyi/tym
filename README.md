@@ -1,5 +1,5 @@
 # tym
-##nginx 配置
+## nginx 配置
 server {
     charset utf-8;
     client_max_body_size 128M;
