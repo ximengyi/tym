@@ -8,6 +8,7 @@ use yii\web\Controller;
 class DefaultController extends Controller
 {
   public function actionIndex(){
-    return "index";
+
+    return DIRECTORY_SEPARATOR;
   }
 }
