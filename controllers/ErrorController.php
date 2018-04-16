@@ -33,8 +33,8 @@ class ErrorController extends Controller
     // todo 写入数据库
 
     }
-      $this->layout =  false;
-
+    //  $this->layout =  false;
+       echo $err_msg;die;
     return  $this->render("error",["$err_msg"=>$err_msg]);
   }
 
