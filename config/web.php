@@ -24,7 +24,9 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'error/error',
+           'errorAction' => 'error/error',
+              // 'errorAction' => 'site/error',
+
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -52,12 +54,13 @@ $config = [
         'web' => [
             'class' => 'app\modules\web\WebModule',
         ],
-    ],
-    'modules' => [
         'm' => [
             'class' => 'app\modules\m\MModule',
         ],
     ],
+    // 'modules' => [
+    //
+    // ],
 ];
 
 if (YII_ENV_DEV) {
