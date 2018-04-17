@@ -13,39 +13,45 @@ class BookController extends Controller
      * Renders the index view for the module
      * @return string
      */
+     public function __construct($id, $module, $config = [])
+     {
+         parent::__construct($id, $module, $config = []);
+         $this->layout = "main";
+     }
+
 
     public function actionIndex()
     {
 
-         $this->layout = false;
+
         return $this->render('index');
     }
 
     public function actionSet()
     {
-         $this->layout = false;
+
          return $this->render('set');
     }
 
     public function actionInfo()
-    {     $this->layout = false;
+    {
           return $this->render('info');
     }
     public function actionImages()
     {
-           $this->layout = false;
+
             return $this->render('images');
     }
     public function actionCat()
     {
-            $this->layout = false;
+
             return $this->render('cat');
     }
 
     public function actionCat_set()
     {
 
-           $this->layout = false;
+  
             return $this->render('cat_set');
     }
 
