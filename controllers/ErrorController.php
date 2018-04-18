@@ -6,7 +6,7 @@ use yii\web\Controller;
 
 
 
-class ErrorController extends Controller
+class ErrorController extends BaseWebController
 {
   public function actionError(){
     //记录错误信息到文件和数据库
