@@ -12,7 +12,6 @@ class UserController extends Controller
 
      //登录页面
 
-
  public function __construct($id, $module, $config = [])
   {
              parent::__construct($id, $module, $config = []);
@@ -68,7 +67,7 @@ class UserController extends Controller
 
     public function actionComment_set()
     {
-  
+
       return $this->render('comment_set');
     }
 

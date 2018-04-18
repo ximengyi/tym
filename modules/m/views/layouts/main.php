@@ -1,3 +1,11 @@
+<?php
+use app\assets\MAsset;
+MAsset::register($this);
+
+?>
+<?php $this->beginPage();?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +16,10 @@
 	<!-- Set render engine for 360 browser -->
 	<meta name="renderer" content="webkit">
 	<title>编程浪子微信图书商城</title>
-	<link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
-<link href="/css/m/css_style.css" rel="stylesheet">
-<link href="/css/m/app.css?ver=20170401" rel="stylesheet">
+ <?php $this->head(); ?>
 </head>
 <body>
-
+	<?php $this->beginBody(); ?>
 
 
 
@@ -41,6 +47,7 @@
 	<span><a href="/m/user/index" class="user"><i class="member_icon"></i><b>我的</b></a></span>
 </div>
 
-
+<?php $this->endBody(); ?>
 </body>
 </html>
+<?php $this->endPage();?>
