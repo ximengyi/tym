@@ -9,23 +9,30 @@ use yii\web\Controller;
  */
 class ProductController extends Controller
 {
-  
+
+
+  public function __construct($id, $module, $config = [])
+    {
+          parent::__construct($id, $module, $config = []);
+          $this->layout = "main";
+    }
+
 
     public function actionIndex()
     {
-       $this->layout= false;
+
         return $this->render('index');
     }
 
     public function actionInfo()
     {
-      $this->layout = false;
+
         return $this->render('info');
     }
 
     public function actionOrder()
     {
-        $this->layout = false;
+    
         return $this->render('order');
     }
 
