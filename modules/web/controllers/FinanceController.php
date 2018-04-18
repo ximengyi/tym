@@ -13,21 +13,28 @@ class FinanceController extends Controller
      * Renders the index view for the module
      * @return string
      */
+
+
+  public function __construct($id, $module, $config = [])
+  {
+              parent::__construct($id, $module, $config = []);
+              $this->layout = "main";
+    }
     public function actionIndex()
     {
-        $this->layout = false;
+
         return $this->render('index');
     }
 
     public function actionAccount()
     {
-        $this->layout = false;
+
         return $this->render('account');
     }
 
     public function actionPay_info()
     {
-        $this->layout = false;
+      
         return $this->render('pay_info');
     }
 }

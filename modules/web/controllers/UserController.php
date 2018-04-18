@@ -14,6 +14,8 @@ class UserController extends Controller
      * @return string
      */
      //登录页面
+
+
     public function actionLogin()
     {
        $this->layout= false;
@@ -22,13 +24,13 @@ class UserController extends Controller
   // 编辑当前登录人信息
     public function actionEdit()
     {
-      $this->layout = false;
+       $this->layout = "main";
         return $this->render('edit');
     }
     // 重置密码
     public function actionResetPwd()
     {
-        $this->layout = false;
+        $this->layout = "main";
         return $this->render('reset_pwd');
     }
 }

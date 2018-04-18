@@ -13,26 +13,34 @@ class StatController extends Controller
      * Renders the index view for the module
      * @return string
      */
+
+   public function __construct($id, $module, $config = [])
+  {
+              parent::__construct($id, $module, $config = []);
+              $this->layout = "main";
+    }
+
+
     public function actionIndex()
     {
-       $this->layout= false;
+
         return $this->render('index');
     }
     public function actionMember()
     {
-       $this->layout= false;
+
         return $this->render('member');
     }
 
     public function actionProduct()
     {
-       $this->layout= false;
+
         return $this->render('product');
     }
 
     public function actionShare()
     {
-       $this->layout= false;
+
         return $this->render('share');
     }
 

@@ -14,28 +14,36 @@ class MemberController extends Controller
      * @return string
      */
      //会员列表
+
+
+   public function __construct($id, $module, $config = [])
+   {
+              parent::__construct($id, $module, $config = []);
+              $this->layout = "main";
+    }
+
     public function actionIndex()
     {
-       $this->layout= false;
+
         return $this->render('index');
     }
       // 添加或者编辑会员
     public function actionSet()
     {
-      $this->layout = false;
+
         return $this->render('set');
     }
 
     // 会员详情
     public function actionInfo()
     {
-        $this->layout = false;
+
         return $this->render('info');
     }
 
     public function actionComment()
     {
-      $this->layout = false;
+
       return $this->render('comment');
     }
 
