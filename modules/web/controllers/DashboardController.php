@@ -2,12 +2,13 @@
 
 namespace app\modules\web\controllers;
 
+use app\modules\web\controllers\common\BaseController;
 use yii\web\Controller;
 
 /**
  * Default controller for the `web` module
  */
-class DashboardController extends Controller
+class DashboardController extends BaseController
 {
     /**
      * Renders the index view for the module
@@ -23,7 +24,7 @@ class DashboardController extends Controller
 
     public function actionIndex()
     {
-    
+
         return $this->render('index');
     }
 

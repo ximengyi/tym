@@ -2,6 +2,7 @@
 
 namespace app\common\components;
 use yii\web\Controller;
+
 //集成常用公用方法给所有的controller使用
 /**
 
@@ -71,4 +72,9 @@ public function getCookie($name,$deafult_val='')
         ] );
 
     }
+     public function renderJs($msg,$url)
+     {
+       return $this->renderPartial("@app/views/common/js",['msg'=>$msg,'url'=>$url]);
+     }
+
 }

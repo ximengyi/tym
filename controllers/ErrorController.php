@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 use yii\log\FileTarget;
-use yii\web\Controller;
+use app\common\components\BaseWebController;
 
 
 
