@@ -3,11 +3,11 @@
 namespace app\modules\web\controllers;
 
 use yii\web\Controller;
-
+use app\modules\web\controllers\common\BaseController;
 /**
  * Default controller for the `web` module
  */
-class BookController extends Controller
+class BookController extends BaseController
 {
     /**
      * Renders the index view for the module
@@ -51,7 +51,7 @@ class BookController extends Controller
     public function actionCat_set()
     {
 
-  
+
             return $this->render('cat_set');
     }
 

@@ -117,7 +117,7 @@ WebAsset::register($this);
 		</div>
 <!-----不同部分begin-->
 <?=$content;?>
-
+	</div>
 
 
 	<?php $this->endBody(); ?>

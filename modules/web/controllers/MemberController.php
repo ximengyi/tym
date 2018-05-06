@@ -3,11 +3,11 @@
 namespace app\modules\web\controllers;
 
 use yii\web\Controller;
-
+use app\modules\web\controllers\common\BaseController;
 /**
  * Default controller for the `m` module
  */
-class MemberController extends Controller
+class MemberController extends BaseController
 {
     /**
      * Renders the index view for the module

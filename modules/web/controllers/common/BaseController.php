@@ -8,6 +8,7 @@ use app\models\User;
 class BaseController  extends BaseWebController
 {
     protected   $auth_cookie_name = "mooc_book";
+    public $current_user = null;
     public $allowAllAction = [
       "web/user/login"
     ];
@@ -43,6 +44,7 @@ class BaseController  extends BaseWebController
     if ($auth_token != $this->geneAuthToken($user_info)) {
        return false;
     }
+    $this->current_user = $user_info;
         return true;
 
    }
@@ -72,8 +74,9 @@ class BaseController  extends BaseWebController
    public function geneAuthToken($user_info)
    {
       return   md5($user_info['login_name'].$user_info['login_pwd'].$user_info['login_salt']);
-   }
 
+   }
+ //设置登录态的方法
    public function setLoginStatus($user_info)
    {
       $auth_token = $this->geneAuthToken($user_info);
@@ -83,7 +86,7 @@ class BaseController  extends BaseWebController
 
    public function removeLoginStatus()
    {
-     $this->removeCookie($this->$auth_cookie_name);
+     $this->removeCookie($this->auth_cookie_name);
    }
 
 }

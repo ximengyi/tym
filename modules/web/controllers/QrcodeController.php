@@ -4,8 +4,8 @@ namespace app\modules\web\controllers;
 
 use yii\web\Controller;
 
-
-class QrcodeController extends Controller
+use app\modules\web\controllers\common\BaseController;
+class QrcodeController extends BaseController
 {
 
   public function __construct($id, $module, $config = [])

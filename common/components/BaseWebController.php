@@ -67,7 +67,7 @@ public function getCookie($name,$deafult_val='')
           "code"=>$code,
           "msg"=>$msg,
           "data"=>$data,
-          "req_id"=>uniquid()
+          "req_id"=>uniqid()
 
         ] );
 

@@ -3,11 +3,11 @@
 namespace app\modules\web\controllers;
 
 use yii\web\Controller;
-
+use app\modules\web\controllers\common\BaseController;
 /**
  * Default controller for the `web` module
  */
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
     /**
      * Renders the index view for the module

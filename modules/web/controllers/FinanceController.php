@@ -3,11 +3,11 @@
 namespace app\modules\web\controllers;
 
 use yii\web\Controller;
-
+use app\modules\web\controllers\common\BaseController;
 /**
  * Default controller for the `web` module
  */
-class FinanceController extends Controller
+class FinanceController extends BaseController
 {
     /**
      * Renders the index view for the module
@@ -34,7 +34,7 @@ class FinanceController extends Controller
 
     public function actionPay_info()
     {
-      
+
         return $this->render('pay_info');
     }
 }

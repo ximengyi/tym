@@ -52,14 +52,62 @@ class UserController extends BaseController
   // 编辑当前登录人信息
     public function actionEdit()
     {
-       $this->layout = "main";
-        return $this->render('edit');
+
+      if(\Yii::$app->request->isGet){
+        return $this->render("edit",['user_info' => $this->current_user]);
+      }
+      // $this->layout = "main";
+      $nickname = trim($this->post("nickname",""));
+      $email = trim($this->post('email',''));
+     if(mb_strlen($nickname,'utf-8')<1){
+       return $this->rederJson([],'请输入合法的姓名');
+     }
+     if(mb_strlen($email,'utf-8')<1){
+        return $this->rederJson([],'请输入合法的邮箱');
+      }
+      $user_info = $this->current_user;
+      $user_info->nickname = $nickname;
+      $user_info->email = $email;
+      $user_info->updated_time = date('Y-m-d H:i:s');
+      $user_info->update(0);
+        return $this->renderJson([],'编辑成功~');
     }
     // 重置密码
     public function actionResetPwd()
     {
-        $this->layout = "main";
-        return $this->render('reset_pwd');
+      if(\Yii::$app->request->isGet){
+        return $this->render("reset_pwd",['user_info'=>$this->current_user]);
+      }
+      //  $this->layout = "main";
+      //  return $this->render('reset_pwd
+     $old_password = trim($this->post("old_password",""));
+     $new_password = trim($this->post("new_password",""));
+     if (mb_strlen($old_password,"utf-8") <1) {
+       return $this->renderJson([],"请输入原密码",-1);
+     }
+
+     if (mb_strlen($new_password,"utf-8") <6) {
+       return $this->renderJson([],"请输入不少于6位字符的新密码",-1);
+     }
+     if($old_password == $new_password){
+     return   $this->renderJson([],"请重新输入一个吧，新密码和原来的密码不能相同哦",-1);
+     }
+
+
+      $current_user = $this->current_user;
+
+      $auth_pwd= md5($old_password . md5($current_user['login_salt']));
+
+      if ($auth_pwd !=$current_user['login_pwd']){
+        return $this->renderJson([],"请检查原密码是否正确~~",-1);
+      }
+
+      $current_user->login_pwd = md5($new_password . md5($current_user['login_salt']));
+      $current_user->updated_time = date("Y-m-d H:i:s");
+      $current_user->update(0);
+      $this->setLoginStatus($current_user);
+      return $this->renderJson([],"重置密码成功~~");
+
     }
     public function actionLogout()
     {
@@ -67,6 +115,6 @@ class UserController extends BaseController
       return $this->redirect(UrlService::buildWebUrl("/user/login"));
     }
 
-  
+
 
 }
