@@ -26,15 +26,17 @@ class UserController extends BaseController
       }
        $login_name = trim($this->post("login_name",""));
        $login_pwd = trim($this->post("login_pwd",""));
-       if(!$login_name||!$login_pwd)
-       {
+       if(!$login_name||!$login_pwd){
+
        return $this->renderJs("请输入正确的用户名和密码0",UrlService::buildWebUrl("/user/login"));
 
         }
         $user_info = User::find()->where(['login_name'=>$login_name])->one();
+
         if (!$user_info) {
+
            return $this->renderJs("请输入正确的用户名和密码1",UrlService::buildWebUrl("/user/login"));
-        }
+      }
   //  md5(login_pwd +md5(login_salt))
     $auth_pwd = md5($login_pwd.md5($user_info['login_salt']));
     if ($auth_pwd!=$user_info['login_pwd']){
@@ -96,13 +98,14 @@ class UserController extends BaseController
 
       $current_user = $this->current_user;
 
-      $auth_pwd= md5($old_password . md5($current_user['login_salt']));
+      //$auth_pwd= md5($old_password . md5($current_user['login_salt']));
 
-      if ($auth_pwd !=$current_user['login_pwd']){
+      if (!$current_user->verifyPassword($old_password)){
         return $this->renderJson([],"请检查原密码是否正确~~",-1);
       }
 
-      $current_user->login_pwd = md5($new_password . md5($current_user['login_salt']));
+      //$current_user->login_pwd = md5($new_password . md5($current_user['login_salt']));
+      $current_user->setPassword($new_password);
       $current_user->updated_time = date("Y-m-d H:i:s");
       $current_user->update(0);
       $this->setLoginStatus($current_user);
