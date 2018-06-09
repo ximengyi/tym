@@ -37,7 +37,7 @@ var user_edit_ops = {
             };
 
             $.ajax({
-                url:'/web/user/edit',
+                url:common_ops.buildWebUrl('/user/edit'),
                 type:'POST',
                 data:data,
                 dataType:'json',

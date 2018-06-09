@@ -28,7 +28,7 @@ if (new_password.length <6) {
    btn_target.addClass("disabled");
 
    $.ajax({
-  url:'/web/user/reset-pwd',
+  url:common_ops.buildWebUrl('/user/reset-pwd'),
   type:'POST',
   data:{
     old_password:old_password,

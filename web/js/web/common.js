@@ -62,6 +62,20 @@ var common_ops = {
                 fix_height();
             }
         });
+
+    },
+
+    buildWebUrl:function(path,params){
+     var url = "/web"+path;
+     var _paramUrl = "";
+     if(params)
+     {
+        Object.keys(params).map(function(k){
+       return [encodeURIComponent(k),encodeURIComponent(params[k])].join("=");
+        }).join("&");
+        _paramUrl = "?"+_paramUrl;
+     }
+     return url+_paramUrl;
     },
     setMenuIconHighLight:function(){
         if( $("#side-menu li").size() < 1 ){
