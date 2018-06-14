@@ -30,7 +30,7 @@ class UrlService
         return $domain_config['www'] . $path;
     }
     //空链接
-    public function buildNullUrl()
+    public static function buildNullUrl()
     {
         return "javascript:void(0);";
     }

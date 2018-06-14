@@ -5,11 +5,11 @@ namespace app\common\components;
 use yii\web\Controller;
 
 //集成常用公用方法给所有的controller使用
+
 /**
-
-//  get post  set cookie get
+ *
+ * //  get post  set cookie get
  **/
-
 class BaseWebController extends Controller
 {
 
@@ -20,12 +20,14 @@ class BaseWebController extends Controller
         return \Yii::$app->request->get($key, $default_val);
 
     }
+
 //获取httppost
     public function post($key, $default_val)
     {
         return \Yii::$app->request->post($key, $default_val);
 
     }
+
 // 设置cookie
 
     public function setCookie($name, $value, $expire = 0)
@@ -56,6 +58,7 @@ class BaseWebController extends Controller
         $cookies = \Yii::$app->response->cookies;
         $cookies->remove($name);
     }
+
     //api 统一返回json格式方法
 
     public function renderJson($data = [], $msg = "ok", $code = 200)
@@ -71,6 +74,7 @@ class BaseWebController extends Controller
             ]);
 
     }
+
     public function renderJs($msg, $url)
     {
         return $this->renderPartial("@app/views/common/js", ['msg' => $msg, 'url' => $url]);
