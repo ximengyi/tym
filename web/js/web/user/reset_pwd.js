@@ -8,7 +8,7 @@ user_reset_pwd_ops ={
 $("#save").click(function(){
 var btn_target = $(this);
 if (btn_target.hasClass("disable")) {
-  alert('正在处理，请不要重复点击');
+  common_ops.alert('正在处理，请不要重复点击');
   return false;
 
 }
@@ -17,11 +17,11 @@ if (btn_target.hasClass("disable")) {
   var old_password= $("#old_password").val();
   var  new_password= $("#new_password").val();
 if (old_password.length < 1) {
-  alert("请输入原密码~~");
+  common_ops.tip("请输入原密码~~",$("#old_password"));
   return false;
 }
 if (new_password.length <6) {
-  alert("请输入不少于6位字符的新密码~~");
+    common_ops.tip("请输入不少于6位字符的新密码~~",$("#new_password"));
   return false;
 }
 
@@ -37,10 +37,15 @@ if (new_password.length <6) {
   dataType:'json',
   success:function(res){
 btn_target.removeClass("disable");
-alert(res.msg);
+callback =null;
 if (res.code==200) {
-  window.location.href = window.location.href;
+  callback =function () {
+      window.location.href = window.location.href;
+  }
+
 }
+
+      common_ops.alert(res.msg,callback);
   }
    } );
   });

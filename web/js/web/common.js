@@ -178,7 +178,47 @@ var common_ops = {
         $('html, body').animate({
             scrollTop: target.offset().top - 10
         }, 100);
+    },
+   alert:function(msg,callback){
+        layer.alert(msg,{
+            yes:function(index){
+                if(typeof callback == "function"){
+                    callback();
+                }
+
+               layer.close(index);
+            }
+        });
+
+
+   },
+    confirm:function(msg,callback)
+    {
+        callback = (callback!=undefined)?callback:{"ok":null,"cancel":null};
+        layer.confirm(msg,{btn:["确定","取消"]},
+            function(index){
+            if(typeof callback.ok=="function"){
+                callback.ok();
+            }
+
+            layer.close(index);
+            },
+            function(index){
+                if(typeof callback.ok=="function"){
+                    callback.cancel();
+                }
+
+               layer.close(index);
+
+            });
+
+    },
+    tip:function(msg,target){
+        layer.tips(msg,target,{tips:[3,'#e5004f']});
+
     }
+
+
 };
 
 $(document).ready( function() {
