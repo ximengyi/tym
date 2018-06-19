@@ -1,4 +1,8 @@
+<?php
+ use \app\common\services\StaticService;
+ StaticService::includeAppJsStatic("/js/web/account/set.js",app\assets\WebAsset::className());
 
+?>
 <div class="row  border-bottom">
 	<div class="col-lg-12">
 		<div class="tab_title">
