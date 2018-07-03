@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\web\controllers\common;
 use app\common\components\BaseWebController;
+use app\common\services\applog\AppLogService;
 use app\common\services\UrlService;
 use app\models\User;
 
@@ -67,6 +68,11 @@ class BaseController  extends BaseWebController
        }
        return false;
      }
+
+     //记录所有用户的访问
+       AppLogService::addAppAccessLog($this->current_user['uid']);
+
+
         return true;
    }
 

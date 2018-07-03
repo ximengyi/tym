@@ -63,6 +63,7 @@ var account_set_ops ={
                 email:email,
                 login_name:login_name,
                 login_pwd:login_pwd,
+                id:$(".wrap_account_set input[name=id]").val()
            };
 
              $.ajax({

@@ -3,6 +3,8 @@
 namespace app\modules\web\controllers;
 
 use app\common\services\ConstantMapService;
+use app\common\services\UrlService;
+use app\models\log\AppAccessLog;
 use yii\web\Controller;
 use app\modules\web\controllers\common\BaseController;
 use app\models\User;
@@ -73,9 +75,19 @@ class AccountController extends BaseController
     public function actionSet()
     {
         if(\Yii::$app->request->isGet){
-            return $this->render('set');
+
+            $id =intval($this->get('id',0));
+            $info =[];
+            if($id){
+
+                $info = User::find()->where(['uid'=>$id])->one();
+            }
+            return $this->render('set',[
+                'info'=>$info,
+            ]);
 
         }
+        $id =intval($this->post("id",0));
         $nickname = trim($this->post("nickname",""));
         $mobile = trim($this->post("mobile",""));
         $email = trim($this->post("email",""));
@@ -107,20 +119,37 @@ class AccountController extends BaseController
 
             return $this->renderJson([],"请输入符合规范的登录密码",-1);
         }
-       $has_in = User::find()->where(['login_name'=>$login_name])->count();
+
+        $has_in = User::find()->where(['login_name'=>$login_name])->andWhere(['!=','uid',$id])->count();
         if($has_in){
 
           return $this->renderJson([],"该登录名已存在,请换一个试试~~",-1);
 
         }
-        $model_user = new User();
+
+        $info = User::find()->where(['uid'=>$id])->one();
+        if($info){
+
+            $model_user =$info;
+        }else{
+            $model_user = new User();
+            $model_user->setSalt();
+            $model_user->created_time = $date_now;
+
+        }
+
+
+
+
         $model_user->nickname = $nickname;
         $model_user->mobile = $mobile;
         $model_user->email =  $email;
         $model_user->avatar = ConstantMapService::$default_avatar;
         $model_user->login_name = $login_name;
-        $model_user->setSalt();
-        $model_user->setPassword($login_pwd);
+        if($login_pwd!=ConstantMapService::$default_password){
+            $model_user->setPassword($login_pwd);
+        }
+
         $model_user->updated_time = $date_now;
         $model_user->created_time = $date_now;
         $model_user->save(0);
@@ -132,7 +161,26 @@ class AccountController extends BaseController
     // 重置密码
     public function actionInfo()
     {
-        return $this->render('info');
+        $id =intval($this->get('id',0));
+        $reback_url =UrlService::buildWebUrl('/account/index');
+        if(!$id){
+
+            return $this->redirect($reback_url);
+
+        }
+        $info =User::find()->where(['uid'=>$id])->one();
+        if(!$info){
+            return $this->redirect($reback_url);
+        }
+
+      $access_list =   AppAccessLog::find()->where(['uid'=>$info['uid']])->orderBy(['id'=>SORT_DESC])->limit(10)->all();
+        return $this->render('info',
+        [
+            'info'=>$info,
+            'access_list'=>$access_list,
+        ]
+
+        );
     }
     //操作方法
     public function actionOps()
