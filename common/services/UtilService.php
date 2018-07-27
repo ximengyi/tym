@@ -20,5 +20,10 @@ public static function encode($display){
 
 }
 
+    public static function getRootPath(){
+
+        return dirname(\Yii::$app->vendorPath);
+
+    }
 
 }

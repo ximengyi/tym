@@ -77,6 +77,15 @@ var common_ops = {
      }
      return url+_paramUrl;
     },
+
+    buildPicUrl:function(bucket,image_key){
+
+      var domain ="http://"+window.location.hostname;
+
+      var bucket_config =$(".hidden_layout_wrap input[name=upload_config]").val();
+      upload_config = eval('('+upload_config+')');
+      return domain + upload_config[bucket]+"/"+image_key;
+    },
     setMenuIconHighLight:function(){
         if( $("#side-menu li").size() < 1 ){
             return;

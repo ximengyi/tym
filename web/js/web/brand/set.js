@@ -1,21 +1,46 @@
 ;
+upload = {
+    error:function (msg) {
+        common_ops.alert(msg);
+    },
+    success:function(image_key){
 
+        var html ='<span class=\"pic-each\"><img src="'+common_ops.buildPicUrl()+'">"' +
+            '<span class="fa fa-times-circle del del_image" data="'+image_key+'"><i></i></span>"' +
+            '</span>';
+
+        if($(".upload_pic_wrap .pic-each").size()>0){
+            $(".upload_pic_wrap .pic-each").html(html);
+        }else {
+
+            $(".upload_pic_wrap").append('<span class="pic-each">'+html+'');
+
+        }
+        brand_set_ops.delete_img();
+
+}
+
+};
 var brand_set_ops ={
 
     init:function(){
         this.eventBind();
+        this.delete_img();
     },
     eventBind:function(){
-        $(".wrap_brand_set .save").click(
-
-            function(){
+        $(".wrap_brand_set .save").click(  function(){
                 var btn_target = $(this);
                 if(btn_target.hasClass("disabled")){
                     common_ops.alert("正在处理,请不要重复提交~~");
                     return;
                 }
-                var name_target = $(".wrap_brand_set input[name =name]");
+
+
+                var  name_target= $(".wrap_brand_set input[name =name]");
                 var name = name_target.val();
+
+
+                var image_key = $(".wrap_brand_set .pic-each .del_image").attr("data");
 
                 var mobile_target = $(".wrap_brand_set input[name =mobile]");
                 var mobile= mobile_target.val();
@@ -28,6 +53,11 @@ var brand_set_ops ={
 
                 if(name.length<1){
                     common_ops.tip("请输入符合规范的品牌名称~~~",name_target);
+                    return;
+                }
+
+                if($(".wrap_brand_set .pic-each .del_image").size()<1){
+                    common_ops.tip("上传品牌logo~~~");
                     return;
                 }
 
@@ -51,6 +81,7 @@ var brand_set_ops ={
 
                 var data = {
                     name:name,
+                    image_key:image_key,
                     mobile:mobile,
                     address:address,
                     description:description
@@ -76,8 +107,22 @@ var brand_set_ops ={
                 });
 
             });
+        $(".wrap_brand_set .upload_pic_wrap input[name=pic]").change(
 
+            function(){
+               $(". wrap_brand_set .upload_pic_wrap").submit();
+            }
+        );
 
+    },
+    
+    delete_img:function () {
+        $(".wrap_brand_set .del_image").unbind().click(
+            function () {
+                $(this).parent().remove();
+            }
+
+        );
     }
 };
 
