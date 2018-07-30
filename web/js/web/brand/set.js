@@ -28,6 +28,13 @@ var brand_set_ops ={
         this.delete_img();
     },
     eventBind:function(){
+
+
+        $(".wrap_brand_set .upload_pic_wrap  input[name=pic]").change(function(){
+            $(".wrap_brand_set .upload_pic_wrap").submit();
+        });
+
+
         $(".wrap_brand_set .save").click(  function(){
                 var btn_target = $(this);
                 if(btn_target.hasClass("disabled")){
@@ -107,14 +114,11 @@ var brand_set_ops ={
                 });
 
             });
-        $(".wrap_brand_set .upload_pic_wrap input[name=pic]").change(
 
-            function(){
-               $(". wrap_brand_set .upload_pic_wrap").submit();
-            }
-        );
 
     },
+
+
     
     delete_img:function () {
         $(".wrap_brand_set .del_image").unbind().click(

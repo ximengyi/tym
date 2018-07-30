@@ -39,7 +39,7 @@ class UploadService  extends BaseService
 
         $hash_key = md5(file_get_contents($file_path));
 
-        $upload_dir_path =  UtilService::getRootPath() . "/web" . $upload_config[$bucket];
+        $upload_dir_path =  UtilService::getRootPath() . "/web" . $upload_config[$bucket]."/";
 
         $folder_name =date("Ymd");
 
@@ -56,7 +56,7 @@ class UploadService  extends BaseService
 
         if(is_uploaded_file($file_path)){
 
-            move_uploaded_file($file_type,$upload_dir_path,$upload_full_name);
+             move_uploaded_file($file_path,$upload_dir_path .$upload_full_name);
 
         }else{
                file_put_contents($upload_dir_path.$upload_full_name.file_get_contents($file_path));

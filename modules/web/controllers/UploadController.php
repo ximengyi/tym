@@ -17,7 +17,7 @@ class UploadController extends BaseController
   public function actionPic(){
      $bucket = trim($this->post("bucket",""));
      $callback ="window.parent.upload";//error success
-     if(!$_FILES ||!iseet($_FILES['pic'])){
+     if(!$_FILES ||!isset($_FILES['pic'])){
 
          return "<script>{$callback}.error('请选择文件之后再提交~~~')</script>";
      }

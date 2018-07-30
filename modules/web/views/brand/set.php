@@ -16,7 +16,8 @@ StaticService::includeAppJsStatic("/js/web/brand/set.js",\app\assets\WebAsset::c
 							</ul>
 		</div>
 	</div>
-</div><div class="row m-t  wrap_brand_set">
+</div>
+<div class="row m-t  wrap_brand_set">
 	<div class="col-lg-12">
 		<h2 class="text-center">品牌设置</h2>
 		<div class="form-horizontal m-t m-b">
@@ -34,7 +35,7 @@ StaticService::includeAppJsStatic("/js/web/brand/set.js",\app\assets\WebAsset::c
                         <div class="upload_wrap pull-left">
                             <i class="fa fa-upload fa-2x"></i>
                             <input type="hidden" name="bucket" value="brand" />
-                            <input type="file" name="pic" accept="image/png, image/jpeg, image/jpg,image/gif">
+                            <input type="file" id="chooseImage" name="pic"  accept="image/png, image/jpeg, image/jpg,image/gif">
                         </div>
                         <?php if($info && $info['logo']): ?>
                         <span class="pic-each">
