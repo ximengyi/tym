@@ -4,16 +4,14 @@ upload = {
         common_ops.alert(msg);
     },
     success:function(image_key){
-
-        var html ='<span class=\"pic-each\"><img src="'+common_ops.buildPicUrl()+'">"' +
-            '<span class="fa fa-times-circle del del_image" data="'+image_key+'"><i></i></span>"' +
-            '</span>';
-
+       // var type = "brand";
+        //alert(image_key);
+        var html ='<span class="pic-each"> <img src="'+image_key+'"> <span class="fa fa-times-circle del del_image" data="'+image_key+'"><i></i></span></span>';
         if($(".upload_pic_wrap .pic-each").size()>0){
             $(".upload_pic_wrap .pic-each").html(html);
         }else {
 
-            $(".upload_pic_wrap").append('<span class="pic-each">'+html+'');
+            $(".upload_pic_wrap").append('<span class="pic-each">'+ html + '</span>');
 
         }
         brand_set_ops.delete_img();
@@ -30,7 +28,7 @@ var brand_set_ops ={
     eventBind:function(){
 
 
-        $(".wrap_brand_set .upload_pic_wrap  input[name=pic]").change(function(){
+        $(".wrap_brand_set .upload_pic_wrap input[name=pic]").change(function(){
             $(".wrap_brand_set .upload_pic_wrap").submit();
         });
 

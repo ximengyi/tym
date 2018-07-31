@@ -77,14 +77,10 @@ var common_ops = {
      }
      return url+_paramUrl;
     },
-
-    buildPicUrl:function(bucket,image_key){
-
-      var domain ="http://"+window.location.hostname;
-
-      var bucket_config =$(".hidden_layout_wrap input[name=upload_config]").val();
-      upload_config = eval('('+upload_config+')');
-      return domain + upload_config[bucket]+"/"+image_key;
+    buildPicUrl:function( bucket,img_key ){
+        var upload_config = eval( '(' + $(".hidden_layout_warp input[name=upload_config]").val() +')' );
+        var domain = "http://" + window.location.hostname;
+        return domain + upload_config[ bucket ] + "/" + img_key;
     },
     setMenuIconHighLight:function(){
         if( $("#side-menu li").size() < 1 ){
