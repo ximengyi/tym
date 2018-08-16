@@ -62,7 +62,6 @@ class UploadService  extends BaseService
                file_put_contents($upload_dir_path.$upload_full_name.file_get_contents($file_path));
 
         }
-
         return [
             'code'=>200,
             'path' => $upload_full_name,

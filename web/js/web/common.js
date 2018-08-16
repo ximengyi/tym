@@ -77,7 +77,10 @@ var common_ops = {
      }
      return url+_paramUrl;
     },
+
+
     buildPicUrl:function( bucket,img_key ){
+
         var upload_config = eval( '(' + $(".hidden_layout_warp input[name=upload_config]").val() +')' );
         var domain = "http://" + window.location.hostname;
         return domain + upload_config[ bucket ] + "/" + img_key;

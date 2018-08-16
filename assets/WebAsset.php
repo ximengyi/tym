@@ -48,6 +48,7 @@ class WebAsset extends AssetBundle
   			UrlService::buildWwwUrl( "/js/web/bootstrap.min.js"),
   			UrlService::buildWwwUrl( "/plugins/layer/layer.js"),
   			UrlService::buildWwwUrl( "/js/web/common.js",[ 'ver' => $release_version ] ),
+
         //------------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       //  UrlService::buildWwwUrl( "/js/web/common.js",[ 'ver' => $release_version ] ),
   		];

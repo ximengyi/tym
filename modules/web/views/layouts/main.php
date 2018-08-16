@@ -119,7 +119,7 @@ $upload_config =Yii::$app->params['upload'];
 <!-----不同部分begin-->
 <?=$content;?>
 	</div>
-<div class="hidden_layout_wrap hide">
+<div class="hidden_layout_warp hide">
     <input type="hidden" name ="upload_config" value ='<?=json_encode($upload_config); ?>'>
 
 </div>

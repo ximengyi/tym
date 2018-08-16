@@ -4,9 +4,7 @@ upload = {
         common_ops.alert(msg);
     },
     success:function(image_key){
-       // var type = "brand";
-        //alert(image_key);
-        var html ='<span class="pic-each"> <img src="'+image_key+'"> <span class="fa fa-times-circle del del_image" data="'+image_key+'"><i></i></span></span>';
+        var html ='<img src="'+common_ops.buildPicUrl("brand",image_key)+'"> <span class="fa fa-times-circle del del_image" data="'+image_key+'"><i></i></span>';
         if($(".upload_pic_wrap .pic-each").size()>0){
             $(".upload_pic_wrap .pic-each").html(html);
         }else {
@@ -15,7 +13,6 @@ upload = {
 
         }
         brand_set_ops.delete_img();
-
 }
 
 };
