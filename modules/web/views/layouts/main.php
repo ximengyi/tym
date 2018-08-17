@@ -26,7 +26,7 @@ $upload_config =Yii::$app->params['upload'];
 				<li class="nav-header">
 					<div class="profile-element text-center">
                         <img alt="image" class="img-circle" src="/images/web/logo.png" />
-                        <p class="text-muted">编程浪子</p>
+                        <p class="text-muted">管理后台</p>
 					</div>
 					<div class="logo-element">
                         <img alt="image" class="img-circle" src="/images/web/logo.png" />
@@ -72,7 +72,7 @@ $upload_config =Yii::$app->params['upload'];
 				<ul class="nav navbar-top-links navbar-right">
 					<li>
 						<span class="m-r-sm text-muted welcome-message">
-                            欢迎使用编程浪子图书商城管理后台
+                            欢迎使用图书商城管理后台
                         </span>
 					</li>
 					<li class="hidden">
