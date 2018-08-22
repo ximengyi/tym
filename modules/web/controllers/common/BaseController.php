@@ -8,6 +8,7 @@ use app\models\User;
 
 class BaseController  extends BaseWebController
 {
+    protected $page_size = 50;
     protected   $auth_cookie_name = "mooc_book";
     public $current_user = null;
     public $allowAllAction = [

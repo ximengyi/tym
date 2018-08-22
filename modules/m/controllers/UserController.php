@@ -2,20 +2,21 @@
 
 namespace app\modules\m\controllers;
 
+use app\modules\m\controllers\common\BaseController;
 use yii\web\Controller;
 
 /**
  * Default controller for the `m` module
  */
-class UserController extends Controller
+class UserController extends BaseController
 {
 
      //登录页面
 
  public function __construct($id, $module, $config = [])
   {
-             parent::__construct($id, $module, $config = []);
-             $this->layout = "main";
+      parent::__construct($id, $module, $config = []);
+      $this->layout = "main";
     }
 
     public function actionIndex()

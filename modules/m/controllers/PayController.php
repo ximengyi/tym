@@ -2,12 +2,13 @@
 
 namespace app\modules\m\controllers;
 
+use app\modules\m\controllers\common\BaseController;
 use yii\web\Controller;
 
 /**
  * Default controller for the `m` module
  */
-class PayController extends Controller
+class PayController extends BaseController
 {
     /**
      * Renders the index view for the module

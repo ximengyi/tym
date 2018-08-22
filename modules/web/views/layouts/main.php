@@ -90,7 +90,7 @@ $upload_config =Yii::$app->params['upload'];
                         <ul class="dropdown-menu dropdown-messages">
                             <li>
                                 <div class="dropdown-messages-box">
-                                   姓名：编程浪子郭大爷                                    <a href="/web/user/edit" class="pull-right">编辑</a>
+                                   姓名：编程浪子                                    <a href="/web/user/edit" class="pull-right">编辑</a>
                                 </div>
                             </li>
                             <li class="divider"></li>

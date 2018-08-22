@@ -2,12 +2,13 @@
 
 namespace app\modules\m\controllers;
 
+use app\modules\m\controllers\common\BaseController;
 use yii\web\Controller;
 
 /**
  * Default controller for the `m` module
  */
-class ProductController extends Controller
+class ProductController extends BaseController
 {
 
 
