@@ -10,6 +10,13 @@ return [
         "avatar"=>"/uploads/avatar",
         "brand"=>"/uploads/brand",
         "book" => "/uploads/book",
-    ]
+    ],
+    "weixin"=>[
+        'appid'=>"wx584fc5d1d6534869",
+        'sk'=>'',
+        'token'=>'',
+        'aeskey'=>'',
+
+    ],
 
 ];
