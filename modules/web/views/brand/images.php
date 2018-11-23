@@ -67,8 +67,6 @@ StaticService::includeAppJsStatic("/js/web/brand/image.js",\app\assets\WebAsset:
 	</div>
 </div>
 
-
-
 <div class="modal fade" id="brand_image_wrap" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

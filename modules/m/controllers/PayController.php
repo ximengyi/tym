@@ -20,7 +20,7 @@ class PayController extends BaseController
     {
              parent::__construct($id, $module, $config = []);
              $this->layout = "main";
-       }
+    }
 
 
     public function actionBuy()
